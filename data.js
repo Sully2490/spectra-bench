@@ -1,0 +1,118 @@
+// Content locked to "Study Guide for Exam 2 Gen Chem 1045-3"
+const GUIDE=[
+["Chapter 3",[
+["Nature of light/EM radiation: wave/particle duality, nodes, wave equation","Notes","light"],
+["Nature of electron: standing wave, electron probability, Heisenberg uncertainty principle","Notes","electron"],
+["Explanation of H atom emission lines","Lab","bohr"],
+["Principal quantum number n (1,2,3...)","Drill","qn"],
+["Angular momentum quantum number l (0 to n-1)","Drill","qn"],
+["Magnetic quantum number ml (-l to +l)","Drill","qn"],
+["Spin quantum number (+1/2, -1/2); identify an element from quantum numbers in an s or p orbital","Drill","qn2el"],
+["Orbital shapes s, p, d (skip f)","Cards",""],
+["Pauli exclusion principle","Notes","qnum"],
+["Orbital diagrams and Hund's rule","Drill","unpaired"],
+["Filling order (1s 2s 2p 3s 3p 4s 3d...)","Drill","config"],
+["Electron configuration and abbreviated (noble gas) configuration","Drill","config"],
+["Periodic trends: atomic radius, ionization energy, electron affinity","Drill","trend"]]],
+["Chapter 4",[
+["Nature of covalent bond (sharing)","Notes","cov"],
+["Ionic vs polar covalent vs nonpolar covalent from electronegativity table","Drill","bondtype"],
+["Nomenclature of ionic/covalent species, polyatomics","Drill","name"],
+["Lewis structures of elements (dot symbols)","Drill","dots"],
+["Lewis structures of covalent molecules with single, double, triple bonds","Lab","lewis"],
+["Octet rule violators (fewer or more)","Lab","lewis"],
+["Formal charges (formula given)","Lab","lewis"],
+["Resonance structures and evaluating them","Lab","lewis"],
+["Electron geometry and molecular geometry","Lab","lewis"],
+["VSEPR and lone pair repulsion","Notes","vsepr"],
+["Bond angles in 3-D","Drill","geo"],
+["Bond dipoles canceling in symmetric structures","Drill","geo"]]]];
+
+const TERMS={
+"wave/particle duality":"Light (and electrons) act as waves (interference, diffraction) and as particles (photons, photoelectric effect).",
+"node":"A point/surface where the wave amplitude is zero. Electron probability is zero at a node.",
+"photon":"A packet of light energy. E = hν = hc/λ. h = 6.626×10⁻³⁴ J·s.",
+"wave equation":"c = λν. c = 2.998×10⁸ m/s.",
+"standing wave":"A wave confined so only whole numbers of half-wavelengths fit. That is why electron energies are quantized.",
+"probability":"An orbital is a region of high electron probability (ψ²), not a fixed path.",
+"Heisenberg":"Δx·Δp ≥ h/4π. You can't know exact position and momentum together.",
+"Pauli":"No two electrons in an atom share all four quantum numbers, so at most 2 per orbital, with opposite spin.",
+"Hund":"Fill degenerate orbitals singly with parallel spins before pairing.",
+"aufbau":"Fill from low to high energy: 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p…",
+"Cr":"Cr: [Ar] 4s¹ 3d⁵, not 4s² 3d⁴. A half-filled d is more stable.",
+"Cu":"Cu: [Ar] 4s¹ 3d¹⁰, not 4s² 3d⁹. A filled d is more stable.",
+"electronegativity":"How strongly a bonded atom pulls shared electrons. ΔEN < 0.4 nonpolar, 0.4–1.8 polar covalent, > 1.8 ionic.",
+"formal charge":"FC = (valence e⁻) − (lone-pair e⁻) − ½(bonding e⁻). Best structure: FCs near 0, negative on the more electronegative atom.",
+"resonance":"Two or more valid Lewis structures differing only in electron placement. The real molecule is their average.",
+"VSEPR":"Electron domains (bonds count once, lone pairs once) spread apart. Lone pairs repel more, so angles shrink.",
+"octet violator":"Fewer than 8: B (6), Be (4). More than 8: period 3+ central atoms (P, S, Cl, Xe) using d orbitals.",
+"Hg2^2+":"Mercury(I) is the diatomic ion Hg₂²⁺, so mercury(I) chloride is Hg₂Cl₂.",
+"O2^2-":"Peroxide is O₂²⁻, so sodium peroxide is Na₂O₂ (not Na₂O).",
+"C2H3O2-":"Acetate is C₂H₃O₂⁻ (also written CH₃COO⁻).",
+"emission line":"An electron drops from higher n to lower n and emits a photon: ΔE = 2.179×10⁻¹⁸ J (1/n_f² − 1/n_i²). Only specific λ appear.",
+"dipole":"A bond dipole points toward the more electronegative atom. Symmetric shapes cancel them, so the molecule is nonpolar."};
+
+const NOTES=[
+["light","Light (Ch 3)",["c = λν · E = hν = hc/λ","[wave/particle duality]: diffraction shows waves, the photoelectric effect shows [photon]s.","[node] = zero amplitude. A standing wave on length L has λ = 2L/n.","[wave equation] reminder: as λ goes up, ν and E go down."]],
+["electron","Electron as a wave",["de Broglie: λ = h/mv.","[standing wave] means quantized energies.","Orbitals are [probability] clouds. [Heisenberg]: Δx·Δp ≥ h/4π."]],
+["h","H emission",["[emission line]: Eₙ = −2.179×10⁻¹⁸ J / n²","Balmer (to n=2) is visible: 3→2 = 656 nm (red). Try it in Lab."]],
+["qnum","Quantum numbers",["n = 1, 2, 3… (shell/size)","l = 0…n−1 (s=0, p=1, d=2), shape","ml = −l…+l (orientation). Orbitals per subshell = 2l+1","ms = +½ or −½. [Pauli]: max 2 e⁻ per orbital.","[Hund]: spread out, parallel spins first."]],
+["config","Configurations",["[aufbau] order: 1s 2s 2p 3s 3p 4s 3d 4p","Noble gas shorthand: Fe = [Ar] 4s² 3d⁶","Exceptions: [Cr] and [Cu]."]],
+["trends","Periodic trends",["Atomic radius: increases down a group and decreases across a period.","IE₁: decreases down a group and increases across a period (dips at B and O).","Electron affinity: generally more energy released across a period, with the halogens the most."]],
+["cov","Bonds",["Covalent = shared electrons. Ionic = transferred electrons (lattice of ions).","[electronegativity] difference decides the bond type.","[dipole] arrow points to the more EN atom."]],
+["names","Naming rules",["Charges balance; use parentheses only when a polyatomic count is > 1: Ca(NO₃)₂ but NH₄Cl.","Roman numeral = cation charge: FeCl₃ is iron(III) chloride.","[Hg2^2+] · [O2^2-] · [C2H3O2-]","Covalent: prefixes (mono- dropped on the first element): N₂O₄ = dinitrogen tetroxide.","Acids: binary → hydro-…-ic acid (HCl). -ate → -ic (HNO₃ nitric), -ite → -ous (HNO₂ nitrous). H₃PO₃ = phosphorous acid."]],
+["lewis","Lewis / FC",["Count the valence e⁻ (add e⁻ for − charge, remove for +).","[formal charge] = V − L − ½B","[octet violator]s · [resonance]"]],
+["vsepr","VSEPR",["[VSEPR]: 2 domains linear 180°, 3 trigonal planar 120°, 4 tetrahedral 109.5°, 5 trigonal bipyramidal 90/120°, 6 octahedral 90°.","Lone pairs → bent (H₂O, <109.5°), trigonal pyramidal (NH₃), seesaw, T-shaped, square planar.","Symmetric shape + identical outer atoms means dipoles cancel → nonpolar."]]];
+
+// [formula, name, alt formulas, alt names]
+const NAMES=[
+["Hg2Cl2","mercury(I) chloride"],["HgCl2","mercury(II) chloride"],["Na2O2","sodium peroxide"],["Na2O","sodium oxide"],
+["NaC2H3O2","sodium acetate",["NaCH3COO"]],["Ca(C2H3O2)2","calcium acetate",["Ca(CH3COO)2"]],["Ca(NO3)2","calcium nitrate"],["NH4Cl","ammonium chloride"],
+["(NH4)2SO4","ammonium sulfate"],["FeCl3","iron(III) chloride"],["FeO","iron(II) oxide"],["CuO","copper(II) oxide"],["Cu2O","copper(I) oxide"],
+["Mg3N2","magnesium nitride"],["Al2O3","aluminum oxide"],["Ca3(PO4)2","calcium phosphate"],["Pb(NO3)2","lead(II) nitrate"],["SnCl4","tin(IV) chloride"],
+["NaHCO3","sodium hydrogen carbonate",[],["sodium bicarbonate"]],["KMnO4","potassium permanganate"],["Ba(OH)2","barium hydroxide"],["K2CrO4","potassium chromate"],
+["Li2CO3","lithium carbonate"],["Al2(SO4)3","aluminum sulfate"],["NaClO","sodium hypochlorite"],["KClO3","potassium chlorate"],["H2O2","hydrogen peroxide"],
+["N2O4","dinitrogen tetroxide",[],["dinitrogen tetraoxide"]],["PCl5","phosphorus pentachloride"],["CO","carbon monoxide"],["SF6","sulfur hexafluoride"],
+["CCl4","carbon tetrachloride"],["P4O10","tetraphosphorus decoxide",[],["tetraphosphorus decaoxide"]],["Cl2O7","dichlorine heptoxide",[],["dichlorine heptaoxide"]],["SiS2","silicon disulfide"],
+["HCl(aq)","hydrochloric acid",["HCl"]],["HBr(aq)","hydrobromic acid",["HBr"]],["H2S(aq)","hydrosulfuric acid",["H2S"]],["HNO3","nitric acid"],["HNO2","nitrous acid"],
+["H2SO4","sulfuric acid"],["H2SO3","sulfurous acid"],["H3PO4","phosphoric acid"],["H3PO3","phosphorous acid"],["HClO4","perchloric acid"],["HClO","hypochlorous acid"],
+["HC2H3O2","acetic acid",["CH3COOH"]]];
+const POLY=[["NH4+","ammonium"],["NO3−","nitrate"],["NO2−","nitrite"],["SO4²−","sulfate"],["SO3²−","sulfite"],["PO4³−","phosphate"],["PO3³−","phosphite"],["CO3²−","carbonate"],["HCO3−","hydrogen carbonate"],["OH−","hydroxide"],["C2H3O2− (CH3COO−)","acetate"],["O2²−","peroxide"],["Hg2²+","mercury(I)"],["ClO−","hypochlorite"],["ClO2−","chlorite"],["ClO3−","chlorate"],["ClO4−","perchlorate"],["MnO4−","permanganate"],["CrO4²−","chromate"],["Cr2O7²−","dichromate"],["CN−","cyanide"]];
+
+// Lewis molecules. sk = skeleton [el,parentIdx]; geo per central atom(s); refFC = min Σ|FC|; res = # resonance forms
+const MOLS=[
+{f:"H2O2",n:"hydrogen peroxide",q:0,sk:[["O",-1],["O",0],["H",0],["H",1]],refFC:0,res:1,geo:{eg:"tetrahedral",mg:"bent",ang:"<109.5",pol:"polar",about:"each O"}},
+{f:"SiS2",n:"silicon disulfide (molecule)",q:0,sk:[["Si",-1],["S",0],["S",0]],refFC:0,res:1,geo:{eg:"linear",mg:"linear",ang:"180",pol:"nonpolar"}},
+{f:"H2O",q:0,sk:[["O",-1],["H",0],["H",0]],refFC:0,res:1,geo:{eg:"tetrahedral",mg:"bent",ang:"<109.5",pol:"polar"}},
+{f:"NH3",q:0,sk:[["N",-1],["H",0],["H",0],["H",0]],refFC:0,res:1,geo:{eg:"tetrahedral",mg:"trigonal pyramidal",ang:"<109.5",pol:"polar"}},
+{f:"CH4",q:0,sk:[["C",-1],["H",0],["H",0],["H",0],["H",0]],refFC:0,res:1,geo:{eg:"tetrahedral",mg:"tetrahedral",ang:"109.5",pol:"nonpolar"}},
+{f:"CHCl3",q:0,sk:[["C",-1],["H",0],["Cl",0],["Cl",0],["Cl",0]],refFC:0,res:1,geo:{eg:"tetrahedral",mg:"tetrahedral",ang:"109.5",pol:"polar"}},
+{f:"CO2",q:0,sk:[["C",-1],["O",0],["O",0]],refFC:0,res:1,geo:{eg:"linear",mg:"linear",ang:"180",pol:"nonpolar"}},
+{f:"HCN",q:0,sk:[["C",-1],["H",0],["N",0]],refFC:0,res:1,geo:{eg:"linear",mg:"linear",ang:"180",pol:"polar"}},
+{f:"N2",q:0,sk:[["N",-1],["N",0]],refFC:0,res:1,geo:{eg:"linear",mg:"linear",ang:"180",pol:"nonpolar"}},
+{f:"C2H2",q:0,sk:[["C",-1],["C",0],["H",0],["H",1]],refFC:0,res:1,geo:{eg:"linear",mg:"linear",ang:"180",pol:"nonpolar",about:"each C"}},
+{f:"C2H4",q:0,sk:[["C",-1],["C",0],["H",0],["H",0],["H",1],["H",1]],refFC:0,res:1,geo:{eg:"trigonal planar",mg:"trigonal planar",ang:"120",pol:"nonpolar",about:"each C"}},
+{f:"CH2O",q:0,sk:[["C",-1],["O",0],["H",0],["H",0]],refFC:0,res:1,geo:{eg:"trigonal planar",mg:"trigonal planar",ang:"120",pol:"polar"}},
+{f:"BF3",q:0,sk:[["B",-1],["F",0],["F",0],["F",0]],refFC:0,res:1,geo:{eg:"trigonal planar",mg:"trigonal planar",ang:"120",pol:"nonpolar"},note:"Octet violator: B has only 6 e⁻."},
+{f:"BeCl2",q:0,sk:[["Be",-1],["Cl",0],["Cl",0]],refFC:0,res:1,geo:{eg:"linear",mg:"linear",ang:"180",pol:"nonpolar"},note:"Octet violator: Be has only 4 e⁻."},
+{f:"PCl3",q:0,sk:[["P",-1],["Cl",0],["Cl",0],["Cl",0]],refFC:0,res:1,geo:{eg:"tetrahedral",mg:"trigonal pyramidal",ang:"<109.5",pol:"polar"}},
+{f:"PCl5",q:0,sk:[["P",-1],["Cl",0],["Cl",0],["Cl",0],["Cl",0],["Cl",0]],refFC:0,res:1,geo:{eg:"trigonal bipyramidal",mg:"trigonal bipyramidal",ang:"90 & 120",pol:"nonpolar"},note:"Expanded octet: P has 10 e⁻."},
+{f:"SF4",q:0,sk:[["S",-1],["F",0],["F",0],["F",0],["F",0]],refFC:0,res:1,geo:{eg:"trigonal bipyramidal",mg:"seesaw",ang:"<90 & <120",pol:"polar"},note:"Expanded octet: S has 10 e⁻."},
+{f:"ClF3",q:0,sk:[["Cl",-1],["F",0],["F",0],["F",0]],refFC:0,res:1,geo:{eg:"trigonal bipyramidal",mg:"T-shaped",ang:"<90",pol:"polar"},note:"Expanded octet: Cl has 10 e⁻."},
+{f:"XeF2",q:0,sk:[["Xe",-1],["F",0],["F",0]],refFC:0,res:1,geo:{eg:"trigonal bipyramidal",mg:"linear",ang:"180",pol:"nonpolar"},note:"Expanded octet: Xe has 10 e⁻."},
+{f:"SF6",q:0,sk:[["S",-1],["F",0],["F",0],["F",0],["F",0],["F",0],["F",0]],refFC:0,res:1,geo:{eg:"octahedral",mg:"octahedral",ang:"90",pol:"nonpolar"},note:"Expanded octet: S has 12 e⁻."},
+{f:"XeF4",q:0,sk:[["Xe",-1],["F",0],["F",0],["F",0],["F",0]],refFC:0,res:1,geo:{eg:"octahedral",mg:"square planar",ang:"90",pol:"nonpolar"},note:"Expanded octet: Xe has 12 e⁻."},
+{f:"O3",q:0,sk:[["O",-1],["O",0],["O",0]],refFC:2,res:2,geo:{eg:"trigonal planar",mg:"bent",ang:"<120",pol:"polar"}},
+{f:"NO2−",q:-1,sk:[["N",-1],["O",0],["O",0]],refFC:1,res:2,geo:{eg:"trigonal planar",mg:"bent",ang:"<120",pol:null}},
+{f:"NO3−",q:-1,sk:[["N",-1],["O",0],["O",0],["O",0]],refFC:3,res:3,geo:{eg:"trigonal planar",mg:"trigonal planar",ang:"120",pol:null}},
+{f:"CO3²−",q:-2,sk:[["C",-1],["O",0],["O",0],["O",0]],refFC:2,res:3,geo:{eg:"trigonal planar",mg:"trigonal planar",ang:"120",pol:null}}];
+
+const CARDS=[
+["s orbital shape","Sphere (l = 0). 1 orbital."],["p orbital shape","Dumbbell (l = 1). 3 orbitals: px, py, pz. Node at the nucleus."],["d orbital shape","Mostly cloverleaf (l = 2). 5 orbitals."],
+["Max e⁻ in shell n","2n²"],["Orbitals in shell n","n²"],["Pauli exclusion","No two e⁻ share all four quantum numbers. Max 2 per orbital."],["Hund's rule","Singly fill degenerate orbitals with parallel spins first."],
+["Cr configuration","[Ar] 4s¹ 3d⁵ (exception)"],["Cu configuration","[Ar] 4s¹ 3d¹⁰ (exception)"],["Heisenberg","Δx·Δp ≥ h/4π"],["E of a photon","E = hν = hc/λ"],["Bohr energy","Eₙ = −2.179×10⁻¹⁸ J/n²"],
+["Radius trend","↑ down a group, ↓ across a period"],["IE₁ trend","↓ down a group, ↑ across a period"],["Electron affinity trend","Generally more exothermic across a period. Halogens are the most."],
+["ΔEN cutoffs","<0.4 nonpolar · 0.4–1.8 polar · >1.8 ionic"],["Formal charge","FC = V − L − ½B"],["Resonance","Same atoms, different e⁻ placement. The real molecule is the average."],
+["Fewer than octet","BF₃ (B: 6 e⁻), BeCl₂ (Be: 4 e⁻)"],["More than octet","PCl₅, SF₄, SF₆, ClF₃, XeF₂, XeF₄ (period 3+ central atom)"],
+["AX₂E₂","tetrahedral e-geometry, bent, <109.5°"],["AX₃E","tetrahedral, trigonal pyramidal, <109.5°"],["AX₂E₃","trigonal bipyramidal, linear, 180°"],["AX₄E₂","octahedral, square planar, 90°"],["AX₄E","trigonal bipyramidal, seesaw"],["AX₃E₂","trigonal bipyramidal, T-shaped"],
+["Mercury(I) ion","Hg₂²⁺, so Hg₂Cl₂"],["Peroxide","O₂²⁻, so Na₂O₂"],["Acetate","C₂H₃O₂⁻ / CH₃COO⁻"],["H₃PO₃","phosphorous acid"],["-ate / -ite acids","-ate → -ic, -ite → -ous"],["Binary acid","hydro-…-ic acid (HCl → hydrochloric)"]];
